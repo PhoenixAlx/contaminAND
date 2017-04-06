@@ -27,7 +27,7 @@ my $current = DateTime->new(
 );
 
 my $stop = DateTime->new(
-			 day   => 3,
+			 day   => 30,
 			 month => 3,
 			 year  => 2017,
 			 time_zone => "Europe/Madrid"
@@ -70,6 +70,7 @@ while ( $current < $stop ) {
       
       shift @filas; #Cabecera
       pop @filas;
+      my @datos_filas;
       for my $f (@filas) {
 	my @columnas = $f->find('td')->map('text')->each;
 	my %these_medidas = %{$this_metadata};
@@ -83,6 +84,9 @@ while ( $current < $stop ) {
 	  $these_medidas{$c} = shift @columnas;
 	}
 	push @datos, \%these_medidas;
+    push @datos_filas, \%these_medidas;
+    print (encode_json \@datos_filas)
+
       }
     }
   }
