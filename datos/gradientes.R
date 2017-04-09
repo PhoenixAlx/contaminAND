@@ -12,6 +12,8 @@ library(scales)
 library(tidyr)
 library(grid)
 library(gridExtra)
+library(infotheo)
+
 datos.CO<-read_csv("contaminAND-gr-conjunto.csv", 
                    col_types = cols(date= col_datetime(),CO.congresos = col_number(), 
                                     CO.norte = col_number()), na = "NA")
